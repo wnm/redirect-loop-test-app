@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_112013) do
+ActiveRecord::Schema.define(version: 2021_05_04_113947) do
 
   create_table "shops", force: :cascade do |t|
     t.string "shopify_domain", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2021_05_04_112013) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "access_scopes"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.bigint "shopify_user_id", null: false
+    t.string "shopify_domain", null: false
+    t.string "shopify_token", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "access_scopes"
+    t.index ["shopify_user_id"], name: "index_users_on_shopify_user_id", unique: true
   end
 
 end
